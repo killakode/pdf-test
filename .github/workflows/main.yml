@@ -6,12 +6,10 @@ on:
     branches: [ master ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -19,14 +17,16 @@ jobs:
           node-version: '20'
           
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         
       - name: Build Angular app
         run: npm run build
+        # или npx ng build
         
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist/pdf-test
           publish_branch: gh-pages
+          keep_files: false
