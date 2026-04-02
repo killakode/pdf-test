@@ -16,7 +16,7 @@ export class App {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  pdfSrc: string | Uint8Array = './61.pdf';
+  pdfSrc = '61.pdf';
   pdfVisible = true;
 
   currentPage = 1;
@@ -59,7 +59,6 @@ export class App {
       this.pdfVisible = false;
       this.cdr.detectChanges();
 
-      this.pdfSrc = new Uint8Array(reader.result as ArrayBuffer);
 
       this.currentPage = 1;
       this.pageSize = 1; // ✅ сброс на 1 страницу
