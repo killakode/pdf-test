@@ -16,7 +16,7 @@ export class App {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  pdfSrc = '61.pdf';
+  pdfSrc = '/61.pdf';
   pdfVisible = true;
 
   currentPage = 1;
