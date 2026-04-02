@@ -20,12 +20,11 @@ jobs:
         run: npm ci
         
       - name: Build
-        run: npm run build
+        run: npm run build  # или ваша команда сборки
         
-      - name: Deploy
+      - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/pdf-test/browser
-          publish_branch: master
-          destination_dir: ./
+          publish_branch: gh-pages  # <-- меняем на gh-pages
